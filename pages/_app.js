@@ -11,9 +11,11 @@ import {
   faTrash,
   faCheck,
   faTimes,
+  faCreditCard,
+  faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
 config.autoAddCss = false;
-library.add(faEdit, faTrash, faCheck, faTimes);
+library.add(faEdit, faTrash, faCheck, faTimes, faCreditCard, faUniversity);
 
 const QUERY_USER = {
   query: `
@@ -36,6 +38,27 @@ const QUERY_USER = {
             imageUrl
           }
           quantity
+        }
+        orders {
+          id
+          items {
+            product {
+              description
+              price
+              imageUrl
+            }
+            quantity
+          }
+        }
+        cards {
+          id
+          cardInfo {
+            id
+            expiration_month
+            expiration_year
+            brand
+            last_digits
+          }
         }
       }
     }`,

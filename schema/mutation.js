@@ -32,6 +32,27 @@ export const LOG_IN = gql`
           }
           quantity
         }
+        orders {
+          id
+          items {
+            product {
+              description
+              price
+              imageUrl
+            }
+            quantity
+          }
+        }
+        cards {
+          id
+          cardInfo {
+            id
+            expiration_month
+            expiration_year
+            brand
+            last_digits
+          }
+        }
       }
       jwt
     }
@@ -121,6 +142,36 @@ export const DELETE_CART = gql`
   mutation DELETE_CART($id: ID!) {
     deleteCart(id: $id) {
       id
+    }
+  }
+`;
+
+export const CREATE_ORDER = gql`
+  mutation CREATE_ORDER(
+    $amount: Float!
+    $cardId: String
+    $token: String
+    $return_uri: String
+  ) {
+    createOrder(
+      amount: $amount
+      cardId: $cardId
+      token: $token
+      return_uri: $return_uri
+    ) {
+      id
+      user {
+        name
+      }
+      items {
+        id
+        product {
+          description
+          price
+        }
+        quantity
+      }
+      authorize_uri
     }
   }
 `;
