@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import { AuthContext } from "../appState/AuthProvider";
 import Link from "next/link";
 import { LOG_IN } from "../schema/mutation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SignInForm = () => {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
@@ -61,9 +62,8 @@ const SignInForm = () => {
         form > input:focus {
           outline-color: #00c;
         }
-        form > button {
+        button {
           height: 35px;
-          background-color: #0c0;
           color: #fff;
           border-radius: 5px;
           border: none;
@@ -71,8 +71,11 @@ const SignInForm = () => {
           cursor: pointer;
           font-weight: bold;
         }
-        form > button:active {
+        button:active {
           transform: scale(0.9, 0.9);
+        }
+        form > button {
+          background-color: #0c0;
         }
         a {
           text-decoration: none;
@@ -110,6 +113,61 @@ const SignInForm = () => {
           <a>Click Here!</a>
         </Link>
       </p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+          margin: "20px auto",
+        }}
+      >
+        <button
+          style={{
+            margin: "10px auto",
+            backgroundColor: "#4267b2",
+            width: "300px",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+          onClick={() => {
+            window.location.href = "http://localhost:4000/auth/facebook";
+          }}
+        >
+          <FontAwesomeIcon
+            icon={["fab", "facebook-f"]}
+            style={{ height: "20px" }}
+          />
+          <div style={{ width: "144px", textAlign: "left" }}>
+            Sign In With Facebook
+          </div>
+        </button>
+        <button
+          style={{
+            margin: "10px auto",
+            backgroundColor: "#ea4335",
+            width: "300px",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+          onClick={() => {
+            window.location.href = "http://localhost:4000/auth/google";
+          }}
+        >
+          <FontAwesomeIcon
+            icon={["fab", "google"]}
+            style={{
+              height: "20px",
+            }}
+          />
+          <div style={{ width: "144px", textAlign: "left" }}>
+            Sign In With Google
+          </div>
+        </button>
+      </div>
+
       {loading && <Loading />}
     </div>
   );

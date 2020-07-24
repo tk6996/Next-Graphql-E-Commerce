@@ -14,8 +14,18 @@ import {
   faCreditCard,
   faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 config.autoAddCss = false;
-library.add(faEdit, faTrash, faCheck, faTimes, faCreditCard, faUniversity);
+library.add(
+  faEdit,
+  faTrash,
+  faCheck,
+  faTimes,
+  faCreditCard,
+  faUniversity,
+  faFacebookF,
+  faGoogle
+);
 
 const QUERY_USER = {
   query: `
