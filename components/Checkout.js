@@ -8,7 +8,7 @@ const Checkout = ({ amount, handleCheckout }) => {
   const handleLoadScript = () => {
     OmiseCard = window.OmiseCard;
     OmiseCard.configure({
-      publicKey: process.env.OMISE_PUBLIC_KEY,
+      publicKey: process.env.NEXT_PUBLIC_OMISE_PUBLIC_KEY,
       currency: "thb",
       frameLabel: "Tea Shop",
       submitLabel: "PAY NOW",

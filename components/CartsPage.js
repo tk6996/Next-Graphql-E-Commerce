@@ -12,7 +12,6 @@ import Loading from "./Loading";
 const CartsPage = () => {
   const { user } = useContext(AuthContext);
   const [loadingCheckOut, setLoadingCheckOut] = useState(false);
-
   const [createOrder, { loading, error }] = useMutation(CREATE_ORDER, {
     refetchQueries: [{ query: ME }],
     onCompleted: (data) => {
